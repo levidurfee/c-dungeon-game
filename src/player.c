@@ -20,3 +20,26 @@ void player_print(s_player player)
 {
     printf("%s is in the %s\n", player.name, player.room->name);
 }
+
+int player_north(s_player *player)
+{
+    if(player->room->north != NULL) {
+        // Since the player and the room both point to each other, we need to
+        // update both variables with their new values. The player is now in
+        // the north room. And the north room now contains the player.
+        player_move(player, player->room, player->room->north);
+
+        return 1;
+    }
+
+    return 0;
+}
+
+int player_move(s_player *player, s_room *from, s_room *to)
+{
+    from->player = NULL;
+    player->room = to;
+    to->player = player;
+
+    return 1;
+}

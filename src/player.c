@@ -72,8 +72,9 @@ int player_move_west(s_player *player)
 int player_move(s_player *player, s_room *from, s_room *to)
 {
     from->player = NULL;
-    player->room = to;
     to->player = player;
+
+    player->room = to;
 
     return 1;
 }

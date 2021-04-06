@@ -3,37 +3,48 @@
  * Copyright (C) 2021 Levi Durfee <levi@x6c.us>
  */
 
-#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
 #include <ncurses.h>
 #include "game.h"
 #include "player.h"
 
 void game_start(s_room *start, s_player *player)
 {
-    int c;
+    WINDOW *main;
+    int ch;
 
-    printf("Welcome to %s\n", start->name);
+    if((main = initscr()) == NULL)
+    {
+        fprintf(stderr, "Error initializing ncurses.\n");
+        exit(EXIT_FAILURE);
+    }
 
-    for(;;) {
-        printf("%s enters the %s\n", player->name, player->room->name);
-        printf("Where would you like to go? (n, e, w, s) (q to quit)\n");
+    noecho();
+    keypad(main, TRUE);
 
-        c = getchar();
+    mvaddstr(5, 10, "Where do you wanna go? (n, e, w, s) ('q' to quit)...");
+    mvprintw(7, 10, "Location: %s", start->name);
+    refresh();
 
-        switch (c)
-        {
-        case 110:
-            if(!player_north(player)) {
-                printf("Door is locked!\n");
-            }
-            break;
+    int moved = 0;
 
-        case 113:
-            printf("You got too scared and left.\n");
-            return;
-            break;
-        default:
+    while((ch = getch()) != 'q') {
+        switch(ch) {
+            case 110:
+                moved = player_move_north(player);
             break;
         }
+
+        deleteln();
+        if(moved == 0) {
+            mvprintw(6, 10, "You ran into a wall lol.");
+        }
+        mvprintw(7, 10, "Location: %s", player->room->name);
+        refresh();
     }
+
+    delwin(main);
+    endwin();
+    refresh();
 }

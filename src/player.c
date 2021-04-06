@@ -21,7 +21,7 @@ void player_print(s_player player)
     printf("%s is in the %s\n", player.name, player.room->name);
 }
 
-int player_north(s_player *player)
+int player_move_north(s_player *player)
 {
     if(player->room->north != NULL) {
         // Since the player and the room both point to each other, we need to

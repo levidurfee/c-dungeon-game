@@ -14,6 +14,7 @@ int main()
 
 	s_room murder = room_create("murder room");
 	room_start.north = &murder;
+	murder.south = &room_start;
 
 	game_start(&room_start, &levi);
 

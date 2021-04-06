@@ -23,8 +23,8 @@ void game_start(s_room *start, s_player *player)
     noecho();
     keypad(main, TRUE);
 
-    mvaddstr(5, 10, "Where do you wanna go? (n, e, w, s) ('q' to quit)...");
-    mvprintw(7, 10, "Location: %s", start->name);
+    mvaddstr(1, 0, "Where do you wanna go? (n, e, w, s) ('q' to quit)...");
+    mvprintw(3, 0, "Location: %s", start->name);
     refresh();
 
     int moved = 0;
@@ -34,13 +34,25 @@ void game_start(s_room *start, s_player *player)
             case 110:
                 moved = player_move_north(player);
             break;
+            case 115:
+                moved = player_move_south(player);
+            break;
+            case 101:
+                moved = player_move_east(player);
+            break;
+            case 119:
+                moved = player_move_west(player);
+            break;
         }
 
         deleteln();
         if(moved == 0) {
-            mvprintw(6, 10, "You ran into a wall lol.");
+            mvprintw(2, 0, "You ran into a wall lol.");
+        } else {
+            mvprintw(2, 0, "");
+            deleteln();
         }
-        mvprintw(7, 10, "Location: %s", player->room->name);
+        mvprintw(3, 0, "Location: %s", player->room->name);
         refresh();
     }
 

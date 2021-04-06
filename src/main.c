@@ -16,6 +16,10 @@ int main()
 	room_start.north = &murder;
 	murder.south = &room_start;
 
+	s_room kitchen = room_create("kitchen");
+	murder.east = &kitchen;
+	kitchen.west = &murder;
+
 	game_start(&room_start, &levi);
 
 	return (0);

@@ -10,9 +10,10 @@
 
 #define MAX_STR_LEN 60
 
-s_room *room_create(char *name)
+s_room *room_create(int id, char *name)
 {
     s_room *room = (s_room *)malloc(sizeof(s_room));
+    room->id    = id;
     room->name  = name;
     room->east  = NULL;
     room->west  = NULL;

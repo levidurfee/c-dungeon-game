@@ -19,6 +19,7 @@ struct player
 
 struct room
 {
+    int         id;
     char        *name;
     struct room *north;
     struct room *east;

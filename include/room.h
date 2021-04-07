@@ -8,6 +8,20 @@
 #ifndef _ROOM_H
 #define _ROOM_H
 
-s_room room_create(char *name);
+
+/**
+ * room_free - will free the malloc.
+ */
+void room_free(s_room *room);
+
+/**
+ * room_list_init - creates a new linked list for building the map.
+ */
+s_room_list *room_list_init();
+
+/**
+ * room_list_free - will free the malloc.
+ */
+void room_list_free(s_room_list *room);
 
 #endif /* _ROOM_H */

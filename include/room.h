@@ -23,6 +23,9 @@ void room_free(s_room *room);
  */
 s_room_list *room_list_init();
 
+void room_list_insert(s_room_list **head, s_room *room);
+void room_list_print(s_room_list **head);
+
 /**
  * room_list_free - will free the malloc.
  */

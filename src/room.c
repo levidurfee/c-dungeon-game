@@ -4,6 +4,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <malloc.h>
 #include "room.h"
@@ -38,6 +39,33 @@ s_room_list *room_list_init()
     return self;
 }
 
+void room_list_insert(s_room_list **head, s_room *room)
+{
+    s_room_list *current = *head;
+    s_room_list *tmp;
+
+    do {
+        tmp = current;
+        current = current->next;
+    } while(current);
+
+    s_room_list *new = room_list_init();
+    tmp->room = room;
+    tmp->next = new;
+}
+
+void room_list_print(s_room_list **head)
+{
+    s_room_list *current = *head;
+    while(current) {
+        if(current->room == NULL) {
+            break;
+        }
+        printf("ID: %d Name: %s\n", current->room->id, current->room->name);
+        current = current->next;
+    }
+}
+
 void room_list_free(s_room_list *room)
 {
     free(room);
@@ -64,13 +92,16 @@ s_room *room_map_load(char *map, char *rooms)
         }
 
         char *token = strtok(line, TAB);
+        int id = atoi(token);
 
-        while(token != NULL) {
-            printf("%s\n", token);
-            token = strtok(NULL, TAB);
-        }
+        token = strtok(NULL, TAB);
+
+        s_room *new_room = room_create(id, token);
+        room_list_insert(&rooms_list, new_room);
     }
     fclose(fp);
+
+    room_list_print(&rooms_list);
 
     // As mentioned above, we're only using the linked-list to help build our
     // actual data structure for the rooms. So, we can free the linked list

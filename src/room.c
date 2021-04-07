@@ -61,7 +61,7 @@ void room_list_print(s_room_list **head)
         if(current->room == NULL) {
             break;
         }
-        printf("ID: %d Name: %s\n", current->room->id, current->room->name);
+        printf("%p\tid:%d\tname:%s\n", current->room, current->room->id, current->room->name);
         current = current->next;
     }
 }
@@ -71,7 +71,7 @@ void room_list_free(s_room_list *room)
     free(room);
 }
 
-s_room *room_map_load(char *map, char *rooms)
+s_room *room_map_load(char *map_file, char *rooms_file)
 {
     // Go ahead and create the data structure we actually want to return before
     // we do anything else, I like doing it this way because I think it's clear.
@@ -84,20 +84,20 @@ s_room *room_map_load(char *map, char *rooms)
 
     // Prepare for loading, reading, and parsing the TSV file.
     char line[MAX_STR_LEN];
-    const char TAB[2] = "\t";
-    FILE *fp = fopen(rooms, "r");
+    FILE *fp = fopen(rooms_file, "r");
     while(1) {
         if(fgets(line, MAX_STR_LEN, fp) == NULL) {
             break;
         }
 
-        char *token = strtok(line, TAB);
+        char *token = strtok(line, "\t");
         int id = atoi(token);
 
-        token = strtok(NULL, TAB);
-        token[strcspn(token, "\n")] = 0;
+        char *name = strtok(NULL, "\t");
+        name[strcspn(name, "\n")] = 0;
+        char *tmp = strdup(name);
 
-        s_room *new_room = room_create(id, token);
+        s_room *new_room = room_create(id, tmp);
         room_list_insert(&rooms_list, new_room);
     }
     fclose(fp);

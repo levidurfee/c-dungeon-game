@@ -31,6 +31,6 @@ void room_list_print(s_room_list **head);
  */
 void room_list_free(s_room_list *room);
 
-s_room *room_map_load(char *map, char *rooms);
+s_room *room_map_load(char *map_file, char *rooms_file);
 
 #endif /* _ROOM_H */

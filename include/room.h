@@ -8,6 +8,10 @@
 #ifndef _ROOM_H
 #define _ROOM_H
 
+/**
+ * room_create - creates a new room with the name specified.
+ */
+s_room *room_create(char *name);
 
 /**
  * room_free - will free the malloc.

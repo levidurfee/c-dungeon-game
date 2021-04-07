@@ -28,4 +28,10 @@ struct room
     s_player    *player;
 };
 
+typedef struct room_list
+{
+    struct room_list *next;
+    s_room           *room;
+} s_room_list;
+
 #endif /* _DEFS_H */

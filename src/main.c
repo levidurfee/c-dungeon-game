@@ -3,24 +3,17 @@
  * Copyright (C) 2021 Levi Durfee <levi@x6c.us>
  */
 
-#include "game.h"
 #include "room.h"
-#include "player.h"
 
 int main()
 {
-	s_room room_start = room_create("haunted house");
-	s_player levi = player_create("Levi", 36, &room_start);
+	s_room_list *rooms = room_list_init();
 
-	s_room murder = room_create("murder room");
-	room_start.north = &murder;
-	murder.south = &room_start;
+	s_room *entrance = room_create("Entrance");
+	rooms->room = entrance;
 
-	s_room kitchen = room_create("kitchen");
-	murder.east = &kitchen;
-	kitchen.west = &murder;
-
-	game_start(&room_start, &levi);
+	room_free(entrance);
+	room_list_free(rooms);
 
 	return (0);
 }

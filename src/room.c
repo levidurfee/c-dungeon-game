@@ -102,7 +102,46 @@ s_room *room_map_load(char *map_file, char *rooms_file)
     }
     fclose(fp);
 
+    // Debug only
     room_list_print(&rooms_list);
+
+    int x = 0;
+    FILE *mfp = fopen(map_file, "r");
+    while(1) {
+        if(fgets(line, MAX_STR_LEN, mfp) == NULL) {
+            break;
+        }
+
+        // We wanna skip the first line
+        if(x == 0) {
+            x++;
+            continue;
+        }
+
+        char *token;
+
+        // Now we gotta find each room by the ID. Then, if any of the below are
+        // not 0, we find the room by that ID and link the rooms.
+        token = strtok(line, "\t");
+        printf("%s\t", token);
+
+        // North, if not 0, find room, and set room's north to this room.
+        token = strtok(NULL, "\t");
+        printf("%s\t", token);
+
+        // South
+        token = strtok(NULL, "\t");
+        printf("%s\t", token);
+
+        // West
+        token = strtok(NULL, "\t");
+        printf("%s\t", token);
+
+        // East
+        token = strtok(NULL, "\t");
+        printf("%s\n", token);
+    }
+    fclose(mfp);
 
     // As mentioned above, we're only using the linked-list to help build our
     // actual data structure for the rooms. So, we can free the linked list

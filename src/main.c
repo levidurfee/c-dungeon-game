@@ -7,13 +7,9 @@
 
 int main()
 {
-	s_room_list *rooms = room_list_init();
+	s_room *map = room_map_load("files/map.tsv", "files/rooms.tsv");
 
-	s_room *entrance = room_create("Entrance");
-	rooms->room = entrance;
-
-	room_free(entrance);
-	room_list_free(rooms);
+	room_free(map);
 
 	return (0);
 }

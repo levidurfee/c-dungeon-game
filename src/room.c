@@ -95,6 +95,7 @@ s_room *room_map_load(char *map, char *rooms)
         int id = atoi(token);
 
         token = strtok(NULL, TAB);
+        token[strcspn(token, "\n")] = 0;
 
         s_room *new_room = room_create(id, token);
         room_list_insert(&rooms_list, new_room);

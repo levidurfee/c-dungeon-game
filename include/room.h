@@ -28,4 +28,6 @@ s_room_list *room_list_init();
  */
 void room_list_free(s_room_list *room);
 
+s_room *room_map_load(char *map, char *rooms);
+
 #endif /* _ROOM_H */

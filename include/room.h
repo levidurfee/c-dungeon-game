@@ -25,6 +25,7 @@ s_room_list *room_list_init();
 
 void room_list_insert(s_room_list **head, s_room *room);
 void room_list_print(s_room_list **head);
+s_room *room_list_search(s_room_list **head, int id);
 
 /**
  * room_list_free - will free the malloc.

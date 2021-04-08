@@ -66,6 +66,22 @@ void room_list_print(s_room_list **head)
     }
 }
 
+s_room *room_list_search(s_room_list **head, int id)
+{
+    s_room_list *current = *head;
+    while(current) {
+        if(current->room == NULL) {
+            break;
+        }
+        if(current->room->id == id) {
+            return current->room;
+        }
+        current = current->next;
+    }
+
+    return NULL;
+}
+
 void room_list_free(s_room_list *room)
 {
     free(room);
@@ -103,7 +119,7 @@ s_room *room_map_load(char *map_file, char *rooms_file)
     fclose(fp);
 
     // Debug only
-    room_list_print(&rooms_list);
+    // room_list_print(&rooms_list);
 
     int x = 0;
     FILE *mfp = fopen(map_file, "r");
@@ -118,28 +134,46 @@ s_room *room_map_load(char *map_file, char *rooms_file)
             continue;
         }
 
+        int id;
         char *token;
 
         // Now we gotta find each room by the ID. Then, if any of the below are
         // not 0, we find the room by that ID and link the rooms.
         token = strtok(line, "\t");
-        printf("%s\t", token);
+        id = atoi(token);
+        s_room *base = room_list_search(&rooms_list, id);
 
         // North, if not 0, find room, and set room's north to this room.
         token = strtok(NULL, "\t");
-        printf("%s\t", token);
+        id = atoi(token);
+        if(id != 0) {
+            s_room *north = room_list_search(&rooms_list, id);
+            base->north = north;
+        }
 
         // South
         token = strtok(NULL, "\t");
-        printf("%s\t", token);
+        id = atoi(token);
+        if(id != 0) {
+            s_room *south = room_list_search(&rooms_list, id);
+            base->south = south;
+        }
 
         // West
         token = strtok(NULL, "\t");
-        printf("%s\t", token);
+        id = atoi(token);
+        if(id != 0) {
+            s_room *west = room_list_search(&rooms_list, id);
+            base->west = west;
+        }
 
         // East
         token = strtok(NULL, "\t");
-        printf("%s\n", token);
+        id = atoi(token);
+        if(id != 0) {
+            s_room *east = room_list_search(&rooms_list, id);
+            base->east = east;
+        }
     }
     fclose(mfp);
 

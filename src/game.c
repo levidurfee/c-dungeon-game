@@ -18,7 +18,7 @@ void game_start(char *filename, char *player_name)
     int ch;
 
     struct node *map = map_load(filename);
-	s_player *player = player_new(player_name);
+    s_player *player = player_new(player_name);
 
     s_game *game = (s_game *)malloc(sizeof(s_game));
     game->map = map;
@@ -88,6 +88,6 @@ void game_start(char *filename, char *player_name)
     refresh();
 
     node_destroy(map);
-	player_free(player);
+    player_free(player);
     free(game);
 }

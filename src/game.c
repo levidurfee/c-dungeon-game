@@ -3,60 +3,91 @@
  * Copyright (C) 2021 Levi Durfee <levi@x6c.us>
  */
 
-#include <stdlib.h>
 #include <ctype.h>
+#include <stdlib.h>
 #include <ncurses.h>
+
+#include "map.h"
 #include "game.h"
+#include "node.h"
 #include "player.h"
 
-void game_start(s_room *start, s_player *player)
+void game_start(char *filename, char *player_name)
 {
     WINDOW *main;
     int ch;
 
+    struct node *map = map_load(filename);
+	s_player *player = player_new(player_name);
+
+    s_game *game = (s_game *)malloc(sizeof(s_game));
+    game->map = map;
+    game->player = player;
+
     if((main = initscr()) == NULL)
     {
-        fprintf(stderr, "Error initializing ncurses.\n");
+        fprintf(stderr, "ncurses error\n");
         exit(EXIT_FAILURE);
     }
-
     noecho();
     keypad(main, TRUE);
 
     mvaddstr(1, 0, "Where do you wanna go? (n, e, w, s) ('q' to quit)...");
-    mvprintw(3, 0, "Location: %s", start->name);
-    refresh();
 
-    int moved = 0;
+    struct node *node = node_search(map, 1);
+    s_room *current_room = node->room;
+    mvprintw(3, 0, "%s", current_room->name);
+
+    refresh();
 
     while((ch = getch()) != 'q') {
         switch(ch) {
             case 110:
-                moved = player_move_north(player);
+                if(current_room->north == 0) {
+                    mvprintw(4, 0, "Can't go north!");
+                    break;
+                }
+                node = node_search(map, current_room->north);
+                current_room = node->room;
+                mvprintw(2, 0, "north");
             break;
             case 115:
-                moved = player_move_south(player);
+                if(current_room->south == 0) {
+                    mvprintw(4, 0, "Can't go south!");
+                    break;
+                }
+                node = node_search(map, current_room->south);
+                current_room = node->room;
+                mvprintw(2, 0, "south");
             break;
             case 101:
-                moved = player_move_east(player);
+                if(current_room->east == 0) {
+                    mvprintw(4, 0, "Can't go east!");
+                    break;
+                }
+                node = node_search(map, current_room->east);
+                current_room = node->room;
+                mvprintw(2, 0, "east");
             break;
             case 119:
-                moved = player_move_west(player);
+                if(current_room->west == 0) {
+                    mvprintw(4, 0, "Can't go west!");
+                    break;
+                }
+                node = node_search(map, current_room->west);
+                current_room = node->room;
+                mvprintw(2, 0, "west");
             break;
         }
-
-        deleteln();
-        if(moved == 0) {
-            mvprintw(2, 0, "You ran into a wall lol.");
-        } else {
-            mvprintw(2, 0, "");
-            deleteln();
-        }
-        mvprintw(3, 0, "Location: %s", player->room->name);
+        mvprintw(3, 0, "%s", current_room->name);
         refresh();
     }
 
     delwin(main);
     endwin();
     refresh();
+
+    node_destroy(map);
+	player_free(player);
+    free(game);
 }

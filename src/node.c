@@ -107,6 +107,7 @@ void node_destroy(struct node *root)
     if(root == NULL) {
         return;
     }
+
     node_destroy(root->left);
     node_destroy(root->right);
 

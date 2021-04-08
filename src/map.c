@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
 #include "map.h"
 #include "node.h"
 #include "room.h"
@@ -30,6 +31,7 @@ struct node *map_load(char *filename)
         // Skip the header.
         if(x == 0) {
             x++;
+
             continue;
         }
 

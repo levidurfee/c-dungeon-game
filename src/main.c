@@ -3,11 +3,15 @@
  * Copyright (C) 2021 Levi Durfee <levi@x6c.us>
  */
 
+#include "game.h"
 #include "room.h"
+#include "player.h"
 
 int main()
 {
 	s_room *map = room_map_load("files/map.tsv", "files/rooms.tsv");
+	s_player levi = player_create("Levi", 36, map);
+	game_start(map, &levi);
 
 	room_free(map);
 

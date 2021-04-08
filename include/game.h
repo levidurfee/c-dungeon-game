@@ -3,6 +3,17 @@
  * Copyright (C) 2021 Levi Durfee <levi@x6c.us>
  */
 
-#include "defs.h"
+#include "node.h"
+#include "player.h"
 
-void game_start(s_room *start, s_player *player);
+#ifndef _GAME_H
+#define _GAME_H
+
+typedef struct game {
+    struct node *map;
+    s_player    *player;
+} s_game;
+
+void game_start(char *filename, char *player_name);
+
+#endif /* _GAME_H */

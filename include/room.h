@@ -3,11 +3,22 @@
  * Copyright (C) 2021 Levi Durfee <levi@x6c.us>
  */
 
-#include "defs.h"
-
 #ifndef _ROOM_H
 #define _ROOM_H
 
-s_room room_create(char *name);
+typedef struct room {
+    int id;
+
+    char *name;
+
+    int north;
+    int west;
+    int east;
+    int south;
+} s_room;
+
+s_room *room_new(int id, char *name);
+
+void room_free(s_room *room);
 
 #endif /* _ROOM_H */

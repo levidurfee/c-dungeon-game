@@ -17,6 +17,11 @@ s_room *room_new(int id, char *name)
     room->east  = 0;
     room->south = 0;
 
+    room->north_name = "";
+    room->west_name  = "";
+    room->east_name  = "";
+    room->south_name = "";
+
     return room;
 }
 

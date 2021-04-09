@@ -11,7 +11,7 @@
 #include "node.h"
 #include "room.h"
 
-#define SEPARATOR "\t"
+#define SEPARATOR "^"
 #define MAX_STR_LEN 100
 
 static s_room *parse_line(char *line);

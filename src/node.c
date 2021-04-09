@@ -10,8 +10,8 @@ struct node *node_new(s_room *room)
 {
     struct node *temp = (struct node*)malloc(sizeof(struct node));
 
-    temp->room = room;
-    temp->left = NULL;
+    temp->room  = room;
+    temp->left  = NULL;
     temp->right = NULL;
 
     return temp;

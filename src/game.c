@@ -24,7 +24,7 @@ void game_start(char *filename, char *player_name)
     s_player *player = player_new(player_name);
 
     s_game *game = (s_game *)malloc(sizeof(s_game));
-    game->map = map;
+    game->map    = map;
     game->player = player;
 
     win_init();

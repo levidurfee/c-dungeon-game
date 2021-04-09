@@ -25,22 +25,22 @@ void win_init()
     cbreak();
     noecho();
 
-    w_top = newwin(WINDOW_TOP_HEIGHT, COLS, 0, 0);
-    w_left = newwin(LINES-(WINDOW_TOP_HEIGHT+WINDOW_BOT_HEIGHT), COLS/2, WINDOW_TOP_HEIGHT, 0);
+    w_top   = newwin(WINDOW_TOP_HEIGHT, COLS, 0, 0);
+    w_left  = newwin(LINES-(WINDOW_TOP_HEIGHT+WINDOW_BOT_HEIGHT), COLS/2, WINDOW_TOP_HEIGHT, 0);
     w_right = newwin(LINES-(WINDOW_TOP_HEIGHT+WINDOW_BOT_HEIGHT), COLS/2, WINDOW_TOP_HEIGHT, COLS/2);
-    w_bot = newwin(WINDOW_BOT_HEIGHT, COLS, LINES-WINDOW_BOT_HEIGHT, 0);
+    w_bot   = newwin(WINDOW_BOT_HEIGHT, COLS, LINES-WINDOW_BOT_HEIGHT, 0);
 
     refresh();
 
-    box(w_top, 0, 0);
-    box(w_left, 0, 0);
+    box(w_top,   0, 0);
+    box(w_left,  0, 0);
     box(w_right, 0, 0);
-    box(w_bot, 0, 0);
+    box(w_bot,   0, 0);
 
-    mvwprintw(w_top, 0, 2, "Instructions");
-    mvwprintw(w_left, 0, 2, "Status");
+    mvwprintw(w_top,   0, 2, "Instructions");
+    mvwprintw(w_left,  0, 2, "Status");
     mvwprintw(w_right, 0, 2, "Map");
-    mvwprintw(w_bot, 0, 2, "Status");
+    mvwprintw(w_bot,   0, 2, "Status");
 
     mvwprintw(w_top, 1, 2, "What do you wanna do?");
     mvwprintw(w_top, 2, 2, "Move: n, w, e, s Quit: q");

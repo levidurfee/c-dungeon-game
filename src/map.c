@@ -58,23 +58,25 @@ struct node *map_load(char *filename)
 static s_room *parse_line(char *line)
 {
     char *token;
-    token = strtok(line, SEPARATOR);
-    int id = atoi(token);
+
+    // ID
+    token     = strtok(line, SEPARATOR);
+    int id    = atoi(token);
 
     // North
-    token = strtok(NULL, SEPARATOR);
+    token     = strtok(NULL, SEPARATOR);
     int north = atoi(token);
 
     // South
-    token = strtok(NULL, SEPARATOR);
+    token     = strtok(NULL, SEPARATOR);
     int south = atoi(token);
 
     // West
-    token = strtok(NULL, SEPARATOR);
+    token    = strtok(NULL, SEPARATOR);
     int west = atoi(token);
 
     // East
-    token = strtok(NULL, SEPARATOR);
+    token    = strtok(NULL, SEPARATOR);
     int east = atoi(token);
 
     // Name

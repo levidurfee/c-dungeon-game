@@ -14,9 +14,9 @@
 void win_init();
 
 /**
- * Update the text for the window that contains the player's location.
+ * Update the text for the current room.
  */
-void win_location(char *name);
+void win_desc(char *name);
 
 /**
  * Update the text for the window that contains the player's status.

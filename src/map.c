@@ -81,14 +81,20 @@ static s_room *parse_line(char *line)
 
     // Name
     char *name = strtok(NULL, SEPARATOR);
-    name[strcspn(name, "\n")] = 0;
+    // name[strcspn(name, "\n")] = 0;
     char *tmp = strdup(name);
+
+    char *msg = strtok(NULL, SEPARATOR);
+    msg[strcspn(msg, "\n")] = 0;
+    char *desc = strdup(msg);
 
     s_room *room = room_new(id, tmp);
     room->north = north;
     room->south = south;
     room->west  = west;
     room->east  = east;
+
+    room->description = desc;
 
     return room;
 }

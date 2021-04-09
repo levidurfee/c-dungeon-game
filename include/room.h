@@ -16,6 +16,8 @@ typedef struct room {
     int east;
     int south;
 
+    char *description;
+
     char *north_name;
     char *west_name;
     char *east_name;

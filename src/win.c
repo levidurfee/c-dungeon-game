@@ -51,13 +51,16 @@ static void win_init_windows()
     box(w_bot,   0, 0);
 
     mvwprintw(w_top,   0, 2, "Instructions");
-    mvwprintw(w_left,  0, 2, "Status");
+    mvwprintw(w_left,  0, 2, "Description");
     mvwprintw(w_right, 0, 2, "Map");
     mvwprintw(w_bot,   0, 2, "Status");
 }
 
-void win_location(char *name)
+void win_desc(char *name)
 {
+    werase(w_left);
+    win_init_windows();
+
     win_print(w_left, name);
 }
 

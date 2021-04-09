@@ -1,12 +1,12 @@
-id^n^s^w^e^name
-1^3^0^0^0^Entrance
-2^5^0^0^3^Bedroom
-3^6^1^2^4^Hall
-4^7^0^3^0^Kitchen
-5^0^2^0^0^Bathroom
-6^8^3^11^7^Library
-7^9^4^3^0^Dining Room
-8^0^6^0^0^Dungeon
-9^0^7^0^0^Bathroom #2
-10^11^0^0^0^Hall
-11^0^10^0^6^Upstairs
+id^n^s^w^e^name^msg
+1^3^0^0^0^Entrance^You enter and you're scared
+2^5^0^0^3^Bedroom^you smell sex
+3^6^1^2^4^Hall^there is a deer head mounted on the wall
+4^7^0^3^0^Kitchen^it smells of onions
+5^0^2^0^0^Bathroom^clean
+6^8^3^11^7^Library^smells of many leather bound books
+7^9^4^3^0^Dining Room^it is dusty
+8^0^6^0^0^Dungeon^moist
+9^0^7^0^0^Bathroom #2^poop in the toilet
+10^11^0^0^0^Hall^a long hallway
+11^0^10^0^6^Upstairs^how'd we get here?

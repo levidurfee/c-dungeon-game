@@ -31,7 +31,7 @@ void game_start(char *filename, char *player_name)
 
     struct node *node = node_search(map, 1);
     s_room *current_room = node->room;
-    win_location(current_room->name);
+    win_desc(current_room->description);
 
     s_room *cr = node_search_map(map, current_room->id);
     win_map(cr);
@@ -73,7 +73,7 @@ void game_start(char *filename, char *player_name)
         }
         cr = node_search_map(map, current_room->id);
         win_map(cr);
-        win_location(current_room->name);
+        win_desc(current_room->description);
     }
 
     win_end();

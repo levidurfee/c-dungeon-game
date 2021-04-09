@@ -25,6 +25,8 @@ struct node *node_min_value(struct node *node);
 
 struct node *node_search(struct node *root, int id);
 
+s_room *node_search_map(struct node *root, int id);
+
 void node_destroy(struct node *root);
 
 void node_inorder(struct node *root);

@@ -5,9 +5,11 @@
 
 #include <ctype.h>
 #include <stdlib.h>
+#include <string.h>
 #include <ncurses.h>
 
 #include "win.h"
+#include "room.h"
 
 #define WINDOW_TOP_HEIGHT 4
 #define WINDOW_BOT_HEIGHT 3
@@ -18,6 +20,7 @@ static WINDOW *w_right;
 static WINDOW *w_bot;
 
 static void win_print(WINDOW *win, char *msg);
+static void win_init_windows();
 
 void win_init()
 {
@@ -32,6 +35,16 @@ void win_init()
 
     refresh();
 
+    win_init_windows();
+
+    mvwprintw(w_top, 1, 2, "What do you wanna do?");
+    mvwprintw(w_top, 2, 2, "Move: n, w, e, s Quit: q");
+
+    win_refresh();
+}
+
+static void win_init_windows()
+{
     box(w_top,   0, 0);
     box(w_left,  0, 0);
     box(w_right, 0, 0);
@@ -41,11 +54,6 @@ void win_init()
     mvwprintw(w_left,  0, 2, "Status");
     mvwprintw(w_right, 0, 2, "Map");
     mvwprintw(w_bot,   0, 2, "Status");
-
-    mvwprintw(w_top, 1, 2, "What do you wanna do?");
-    mvwprintw(w_top, 2, 2, "Move: n, w, e, s Quit: q");
-
-    win_refresh();
 }
 
 void win_location(char *name)
@@ -56,6 +64,34 @@ void win_location(char *name)
 void win_status(char *msg)
 {
     win_print(w_bot, msg);
+}
+
+void win_map(s_room *room)
+{
+    werase(w_right);
+    win_init_windows();
+
+    // Figure out coordinates
+    int offset = 0;
+    int x_middle = COLS/2/2;
+    int y_middle = (LINES-(WINDOW_TOP_HEIGHT+WINDOW_BOT_HEIGHT)) / 2;
+
+    offset = strlen(room->north_name) / 2;
+    mvwprintw(w_right, 1, x_middle-offset, room->north_name);
+
+    mvwprintw(w_right, y_middle, 2, room->west_name);
+
+    offset = strlen(room->name) / 2;
+    mvwprintw(w_right, y_middle, x_middle-offset, room->name);
+
+    offset = (COLS/2) - (strlen(room->east_name) + 2);
+    mvwprintw(w_right, y_middle, offset, room->east_name);
+
+    offset = strlen(room->south_name) / 2;
+    int bottom = LINES-(WINDOW_TOP_HEIGHT+WINDOW_BOT_HEIGHT) - 2;
+    mvwprintw(w_right, bottom, x_middle-offset, room->south_name);
+
+    win_refresh();
 }
 
 static void win_print(WINDOW *win, char *msg)

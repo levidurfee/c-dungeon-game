@@ -3,6 +3,11 @@
  * Copyright (C) 2021 Levi Durfee <levi@x6c.us>
  */
 
+#include "room.h"
+
+#ifndef _WIN_H
+#define _WIN_H
+
 /**
  * Initialize ncurses and build our windows.
  */
@@ -19,6 +24,11 @@ void win_location(char *name);
 void win_status(char *name);
 
 /**
+ * Update the map.
+ */
+void win_map(s_room *room);
+
+/**
  * Free up ncurses pointers and etc.
  */
 void win_end();
@@ -27,3 +37,5 @@ void win_end();
  * Refresh all of the windows.
  */
 void win_refresh();
+
+#endif /* _WIN_H */

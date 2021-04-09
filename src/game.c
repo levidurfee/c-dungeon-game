@@ -33,6 +33,9 @@ void game_start(char *filename, char *player_name)
     s_room *current_room = node->room;
     win_location(current_room->name);
 
+    s_room *cr = node_search_map(map, current_room->id);
+    win_map(cr);
+
     while((ch = getch()) != 'q') {
         switch(ch) {
             case 110:
@@ -68,6 +71,8 @@ void game_start(char *filename, char *player_name)
                 current_room = node->room;
             break;
         }
+        cr = node_search_map(map, current_room->id);
+        win_map(cr);
         win_location(current_room->name);
     }
 

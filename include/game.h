@@ -14,6 +14,9 @@ typedef struct game {
     s_player    *player;
 } s_game;
 
+/**
+ * Start the game with the given map filename, and player name.
+ */
 void game_start(char *filename, char *player_name);
 
 #endif /* _GAME_H */

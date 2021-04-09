@@ -17,6 +17,9 @@ typedef struct room {
     int south;
 } s_room;
 
+/**
+ * Create a new s_room using the ID and name provided.
+ */
 s_room *room_new(int id, char *name);
 
 void room_free(s_room *room);

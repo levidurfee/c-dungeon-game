@@ -5,6 +5,7 @@
 
 #include <malloc.h>
 #include "node.h"
+#include "room.h"
 
 struct node *node_new(s_room *room)
 {
@@ -100,6 +101,39 @@ struct node *node_search(struct node *root, int id)
     }
 
     return node_search(root->left, id);
+}
+
+s_room *node_search_map(struct node *root, int id)
+{
+    struct node *node = node_search(root, id);
+
+    node->room->north_name = "";
+    node->room->west_name = "";
+    node->room->east_name = "";
+    node->room->south_name = "";
+
+    struct node *tmp;
+    if(node->room->north != 0) {
+        tmp = node_search(root, node->room->north);
+        node->room->north_name = tmp->room->name;
+    }
+
+    if(node->room->west != 0) {
+        tmp = node_search(root, node->room->west);
+        node->room->west_name = tmp->room->name;
+    }
+
+    if(node->room->east != 0) {
+        tmp = node_search(root, node->room->east);
+        node->room->east_name = tmp->room->name;
+    }
+
+    if(node->room->south != 0) {
+        tmp = node_search(root, node->room->south);
+        node->room->south_name = tmp->room->name;
+    }
+
+    return node->room;
 }
 
 void node_destroy(struct node *root)

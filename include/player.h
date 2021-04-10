@@ -10,8 +10,14 @@ typedef struct player {
     char *name;
 } s_player;
 
+/**
+ * Create a new player with the name specified.
+ */
 s_player *player_new(char *name);
 
+/**
+ * Free the player pointer.
+ */
 void player_free(s_player *player);
 
 #endif /* _PLAYER_H */

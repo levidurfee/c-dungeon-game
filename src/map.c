@@ -6,11 +6,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
 #include "map.h"
 #include "node.h"
 #include "room.h"
 
-#define SEPARATOR "\t"
+#define SEPARATOR "^"
 #define MAX_STR_LEN 100
 
 static s_room *parse_line(char *line);
@@ -30,6 +31,7 @@ struct node *map_load(char *filename)
         // Skip the header.
         if(x == 0) {
             x++;
+
             continue;
         }
 
@@ -56,35 +58,43 @@ struct node *map_load(char *filename)
 static s_room *parse_line(char *line)
 {
     char *token;
-    token = strtok(line, SEPARATOR);
-    int id = atoi(token);
+
+    // ID
+    token     = strtok(line, SEPARATOR);
+    int id    = atoi(token);
 
     // North
-    token = strtok(NULL, SEPARATOR);
+    token     = strtok(NULL, SEPARATOR);
     int north = atoi(token);
 
     // South
-    token = strtok(NULL, SEPARATOR);
+    token     = strtok(NULL, SEPARATOR);
     int south = atoi(token);
 
     // West
-    token = strtok(NULL, SEPARATOR);
+    token    = strtok(NULL, SEPARATOR);
     int west = atoi(token);
 
     // East
-    token = strtok(NULL, SEPARATOR);
+    token    = strtok(NULL, SEPARATOR);
     int east = atoi(token);
 
     // Name
     char *name = strtok(NULL, SEPARATOR);
-    name[strcspn(name, "\n")] = 0;
+    // name[strcspn(name, "\n")] = 0;
     char *tmp = strdup(name);
+
+    char *msg = strtok(NULL, SEPARATOR);
+    msg[strcspn(msg, "\n")] = 0;
+    char *desc = strdup(msg);
 
     s_room *room = room_new(id, tmp);
     room->north = north;
     room->south = south;
     room->west  = west;
     room->east  = east;
+
+    room->description = desc;
 
     return room;
 }

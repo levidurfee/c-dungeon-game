@@ -15,8 +15,18 @@ typedef struct room {
     int west;
     int east;
     int south;
+
+    char *description;
+
+    char *north_name;
+    char *west_name;
+    char *east_name;
+    char *south_name;
 } s_room;
 
+/**
+ * Create a new s_room using the ID and name provided.
+ */
 s_room *room_new(int id, char *name);
 
 void room_free(s_room *room);

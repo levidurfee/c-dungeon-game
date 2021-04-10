@@ -17,6 +17,8 @@ s_room *room_new(int id, char *name)
     room->east  = 0;
     room->south = 0;
 
+    room->description = "";
+
     room->north_name = "";
     room->west_name  = "";
     room->east_name  = "";
@@ -27,5 +29,7 @@ s_room *room_new(int id, char *name)
 
 void room_free(s_room *room)
 {
+    free(room->name);
+    free(room->description);
     free(room);
 }

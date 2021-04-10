@@ -145,9 +145,7 @@ void node_destroy(struct node *root)
     node_destroy(root->left);
     node_destroy(root->right);
 
-    free(root->room->description);
-    free(root->room->name);
-    free(root->room);
+    room_free(root->room);
     free(root);
 }
 

@@ -18,7 +18,7 @@ static s_room *parse_line(char *line);
 
 struct node *map_load(char *filename)
 {
-    struct node *map;
+    struct node *map = NULL;
 
     int x = 0;
     char line[MAX_STR_LEN];

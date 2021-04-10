@@ -1,5 +1,208 @@
 {
-   <insert_a_suppression_name_here>
+   nc_1
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libncurses.so.6.2
+   fun:newterm_sp
+   fun:newterm
+   fun:initscr
+   fun:win_init
+   fun:game_start
+   fun:main
+}
+{
+   nc_2
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:_nc_home_terminfo
+   fun:_nc_first_db
+   fun:_nc_read_entry2
+   obj:/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+   fun:_nc_setupterm
+   fun:newterm_sp
+   fun:newterm
+   fun:initscr
+   fun:win_init
+   fun:game_start
+   fun:main
+}
+{
+   nc_3
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:realloc
+   fun:_nc_doalloc
+   fun:_nc_read_termtype
+   obj:/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+   obj:/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+   fun:_nc_read_entry2
+   obj:/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+   fun:_nc_setupterm
+   fun:newterm_sp
+   fun:newterm
+   fun:initscr
+   fun:win_init
+}
+{
+   nc_4
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+   fun:_nc_setupterm
+   fun:newterm_sp
+   fun:newterm
+   fun:initscr
+   fun:win_init
+   fun:game_start
+   fun:main
+}
+{
+   nc_5
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libncurses.so.6.2
+   fun:newwin_sp
+   obj:/usr/lib/x86_64-linux-gnu/libncurses.so.6.2
+   fun:newterm_sp
+   fun:newterm
+   fun:initscr
+   fun:win_init
+   fun:game_start
+   fun:main
+}
+{
+   nc_6
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libncurses.so.6.2
+   fun:doupdate_sp
+   fun:wrefresh
+   fun:win_refresh
+   fun:win_init
+   fun:game_start
+   fun:main
+}
+{
+   nc_7
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   fun:_nc_setupterm
+   fun:newterm_sp
+   fun:newterm
+   fun:initscr
+   fun:win_init
+   fun:game_start
+   fun:main
+}
+{
+   nc_8
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libncurses.so.6.2
+   obj:/usr/lib/x86_64-linux-gnu/libncurses.so.6.2
+   fun:doupdate_sp
+   fun:wrefresh
+   fun:win_refresh
+   fun:win_init
+   fun:game_start
+   fun:main
+}
+{
+   nc_9
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   fun:_nc_read_termtype
+   obj:/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+   obj:/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+   fun:_nc_read_entry2
+   obj:/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+   fun:_nc_setupterm
+   fun:newterm_sp
+   fun:newterm
+   fun:initscr
+   fun:win_init
+   fun:game_start
+}
+{
+   nc_10
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:_nc_read_termtype
+   obj:/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+   obj:/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+   fun:_nc_read_entry2
+   obj:/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+   fun:_nc_setupterm
+   fun:newterm_sp
+   fun:newterm
+   fun:initscr
+   fun:win_init
+   fun:game_start
+}
+{
+   nc_11
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   fun:new_prescr
+   fun:newterm
+   fun:initscr
+   fun:win_init
+   fun:game_start
+   fun:main
+}
+{
+   nc_12
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libncurses.so.6.2
+   obj:/usr/lib/x86_64-linux-gnu/libncurses.so.6.2
+   fun:doupdate_sp
+   fun:wrefresh
+   fun:win_refresh
+   fun:win_init
+   fun:game_start
+   fun:main
+}
+{
+   nc_13
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libncurses.so.6.2
+   fun:newterm_sp
+   fun:newterm
+   fun:initscr
+   fun:win_init
+   fun:game_start
+   fun:main
+}
+{
+   nc_14
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   fun:newwin_sp
+   obj:/usr/lib/x86_64-linux-gnu/libncurses.so.6.2
+   fun:newterm_sp
+   fun:newterm
+   fun:initscr
+   fun:win_init
+   fun:game_start
+   fun:main
+}
+{
+   nc_15
    Memcheck:Addr8
    obj:/usr/lib/x86_64-linux-gnu/libncurses.so.6.2
    fun:_nc_free_and_exit
@@ -8,27 +211,7 @@
    fun:main
 }
 {
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:player_new
-   fun:game_start
-   fun:main
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:strdup
-   fun:parse_line
-   fun:map_load
-   fun:game_start
-   fun:main
-}
-{
-   <insert_a_suppression_name_here>
+   nc_16
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:malloc
@@ -45,146 +228,7 @@
    fun:game_start
 }
 {
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:game_start
-   fun:main
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:node_new
-   fun:map_load
-   fun:game_start
-   fun:main
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:node_new
-   fun:node_insert
-   fun:node_insert
-   fun:map_load
-   fun:game_start
-   fun:main
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:node_new
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:map_load
-   fun:game_start
-   fun:main
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:node_new
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:map_load
-   fun:game_start
-   fun:main
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:node_new
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:map_load
-   fun:game_start
-   fun:main
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:node_new
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:map_load
-   fun:game_start
-   fun:main
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:node_new
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:map_load
-   fun:game_start
-   fun:main
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:node_new
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:map_load
-   fun:game_start
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:node_new
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:map_load
-}
-{
-   <insert_a_suppression_name_here>
+   nc_17
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:calloc
@@ -200,24 +244,7 @@
    fun:main
 }
 {
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:node_new
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-   fun:node_insert
-}
-{
-   <insert_a_suppression_name_here>
+   nc_18
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:realloc
@@ -232,18 +259,7 @@
    fun:main
 }
 {
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:room_new
-   fun:parse_line
-   fun:map_load
-   fun:game_start
-   fun:main
-}
-{
-   <insert_a_suppression_name_here>
+   nc_19
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:malloc
@@ -259,7 +275,7 @@
    fun:main
 }
 {
-   <insert_a_suppression_name_here>
+   nc_20
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:realloc
@@ -276,7 +292,7 @@
    fun:win_init
 }
 {
-   <insert_a_suppression_name_here>
+   nc_21
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:malloc
@@ -284,6 +300,20 @@
    fun:vwprintw
    fun:mvwprintw
    fun:win_init_windows
+   fun:win_init
+   fun:game_start
+   fun:main
+}
+{
+   nc_22
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:strdup
+   fun:_nc_setupterm
+   fun:newterm_sp
+   fun:newterm
+   fun:initscr
    fun:win_init
    fun:game_start
    fun:main

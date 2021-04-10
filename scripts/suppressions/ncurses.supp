@@ -1,0 +1,290 @@
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/x86_64-linux-gnu/libncurses.so.6.2
+   fun:_nc_free_and_exit
+   fun:win_end
+   fun:game_start
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:player_new
+   fun:game_start
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:strdup
+   fun:parse_line
+   fun:map_load
+   fun:game_start
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:strdup
+   obj:/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+   fun:_nc_first_db
+   fun:_nc_read_entry2
+   obj:/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+   fun:_nc_setupterm
+   fun:newterm_sp
+   fun:newterm
+   fun:initscr
+   fun:win_init
+   fun:game_start
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:game_start
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:node_new
+   fun:map_load
+   fun:game_start
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:node_new
+   fun:node_insert
+   fun:node_insert
+   fun:map_load
+   fun:game_start
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:node_new
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:map_load
+   fun:game_start
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:node_new
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:map_load
+   fun:game_start
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:node_new
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:map_load
+   fun:game_start
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:node_new
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:map_load
+   fun:game_start
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:node_new
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:map_load
+   fun:game_start
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:node_new
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:map_load
+   fun:game_start
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:node_new
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:map_load
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   fun:_nc_first_db
+   fun:_nc_read_entry2
+   obj:/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+   fun:_nc_setupterm
+   fun:newterm_sp
+   fun:newterm
+   fun:initscr
+   fun:win_init
+   fun:game_start
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:node_new
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+   fun:node_insert
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:realloc
+   fun:_nc_doalloc
+   fun:tparm
+   obj:/usr/lib/x86_64-linux-gnu/libncurses.so.6.2
+   fun:newterm_sp
+   fun:newterm
+   fun:initscr
+   fun:win_init
+   fun:game_start
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:room_new
+   fun:parse_line
+   fun:map_load
+   fun:game_start
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:_nc_first_db
+   fun:_nc_read_entry2
+   obj:/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+   fun:_nc_setupterm
+   fun:newterm_sp
+   fun:newterm
+   fun:initscr
+   fun:win_init
+   fun:game_start
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:realloc
+   fun:_nc_doalloc
+   fun:_nc_tparm_analyze
+   fun:tparm
+   fun:vidputs_sp
+   obj:/usr/lib/x86_64-linux-gnu/libncurses.so.6.2
+   obj:/usr/lib/x86_64-linux-gnu/libncurses.so.6.2
+   obj:/usr/lib/x86_64-linux-gnu/libncurses.so.6.2
+   fun:doupdate_sp
+   fun:wrefresh
+   fun:win_refresh
+   fun:win_init
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libncurses.so.6.2
+   fun:vwprintw
+   fun:mvwprintw
+   fun:win_init_windows
+   fun:win_init
+   fun:game_start
+   fun:main
+}

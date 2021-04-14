@@ -13,9 +13,6 @@
 #include "room.h"
 #include "common.h"
 
-#define SEPARATOR "^"
-#define MAX_STR_LEN 100
-
 struct node *map = NULL;
 
 int ROW_FLAG = 0;

@@ -28,10 +28,9 @@ struct node *map_get()
 /**
  * This callback function is called for each row.
  */
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 int map_load(void *not_used, int argc, char **argv, char **col_name)
 {
-    UNUSED(not_used);
-
     s_room *room;
     for (int i = 0; i < argc; i++)
     {

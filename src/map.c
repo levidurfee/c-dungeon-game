@@ -27,9 +27,12 @@ struct node *map_get()
 
 /**
  * This callback function is called for each row.
+ *
+ * Whenever a function parameter is unused aside from its declaration.
+ * To suppress this warning use the unused attribute (see Variable Attributes).
+ * https://gcc.gnu.org/onlinedocs/gcc/Common-Variable-Attributes.html#Common-Variable-Attributes
  */
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-int map_load(void *not_used, int argc, char **argv, char **col_name)
+int map_load(void *not_used __attribute__((unused)), int argc, char **argv, char **col_name)
 {
     s_room *room;
     for (int i = 0; i < argc; i++)

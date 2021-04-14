@@ -6,95 +6,73 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <malloc.h>
 
 #include "map.h"
 #include "node.h"
 #include "room.h"
+#include "common.h"
 
 #define SEPARATOR "^"
 #define MAX_STR_LEN 100
 
-static s_room *parse_line(char *line);
+struct node *map = NULL;
 
-struct node *map_load(char *filename)
+int ROW_FLAG = 0;
+
+struct node *map_get()
 {
-    struct node *map = NULL;
-
-    int x = 0;
-    char line[MAX_STR_LEN];
-    FILE *fp = fopen(filename, "r");
-    while(1) {
-        if(fgets(line, MAX_STR_LEN, fp) == NULL) {
-            break;
-        }
-
-        // Skip the header.
-        if(x == 0) {
-            x++;
-
-            continue;
-        }
-
-        // First room will be used to start the binary search tree.
-        if(x == 1) {
-            x++;
-            s_room *start = parse_line(line);
-            map = node_new(start);
-
-            continue;
-        }
-
-        // Now we just create rooms and add them to our map.
-        s_room *room = parse_line(line);
-        node_insert(map, room);
-
-        x++;
-    }
-    fclose(fp);
-
     return map;
 }
 
-static s_room *parse_line(char *line)
+/**
+ * This callback function is called for each row.
+ */
+int map_load(void *not_used, int argc, char **argv, char **col_name)
 {
-    char *token;
+    UNUSED(not_used);
 
-    // ID
-    token     = strtok(line, SEPARATOR);
-    int id    = atoi(token);
+    s_room *room;
+    for (int i = 0; i < argc; i++)
+    {
+        if(strcmp(col_name[i], "id") == 0) {
+            int id = atoi(argv[i]);
+            room = room_new(id);
+        }
 
-    // North
-    token     = strtok(NULL, SEPARATOR);
-    int north = atoi(token);
+        if(strcmp(col_name[i], "name") == 0) {
+            room->name = strdup(argv[i]);
+        }
 
-    // South
-    token     = strtok(NULL, SEPARATOR);
-    int south = atoi(token);
+        if(strcmp(col_name[i], "description") == 0) {
+            room->description = strdup(argv[i]);
+        }
 
-    // West
-    token    = strtok(NULL, SEPARATOR);
-    int west = atoi(token);
+        if(strcmp(col_name[i], "north") == 0) {
+            room->north = atoi(argv[i]);
+        }
 
-    // East
-    token    = strtok(NULL, SEPARATOR);
-    int east = atoi(token);
+        if(strcmp(col_name[i], "west") == 0) {
+            room->west = atoi(argv[i]);
+        }
 
-    // Name
-    char *name = strtok(NULL, SEPARATOR);
-    // name[strcspn(name, "\n")] = 0;
-    char *tmp = strdup(name);
+        if(strcmp(col_name[i], "east") == 0) {
+            room->east = atoi(argv[i]);
+        }
 
-    char *msg = strtok(NULL, SEPARATOR);
-    msg[strcspn(msg, "\n")] = 0;
-    char *desc = strdup(msg);
+        if(strcmp(col_name[i], "south") == 0) {
+            room->south = atoi(argv[i]);
+        }
+    }
 
-    s_room *room = room_new(id, tmp);
-    room->north = north;
-    room->south = south;
-    room->west  = west;
-    room->east  = east;
+    // If this is the first row
+    if(ROW_FLAG == 0) {
+        map = node_new(room);
+    } else {
+        node_insert(map, room);
+    }
 
-    room->description = desc;
+    ROW_FLAG++;
 
-    return room;
+    return 0;
 }

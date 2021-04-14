@@ -6,12 +6,12 @@
 #include <malloc.h>
 #include "room.h"
 
-s_room *room_new(int id, char *name)
+s_room *room_new(int id)
 {
     s_room *room = (s_room *)malloc(sizeof(s_room));
 
     room->id    = id;
-    room->name  = name;
+    room->name  = "";
     room->north = 0;
     room->west  = 0;
     room->east  = 0;

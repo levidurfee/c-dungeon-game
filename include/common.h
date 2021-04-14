@@ -3,11 +3,9 @@
  * Copyright (C) 2021 Levi Durfee <levi@x6c.us>
  */
 
-#include "game.h"
+#ifndef _COMMOH_H
+#define _COMMON_H
 
-int main()
-{
-    game_start("Levi");
+#define UNUSED(x) (void)(x)
 
-    return 0;
-}
+#endif /* _COMMON_H */

@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <ncurses.h>
 
+#include "db.h"
 #include "map.h"
 #include "win.h"
 #include "game.h"
@@ -16,11 +17,12 @@
 #define WINDOW_TOP_HEIGHT 4
 #define WINDOW_BOT_HEIGHT 4
 
-void game_start(char *filename, char *player_name)
+void game_start(char *player_name)
 {
     int ch;
 
-    struct node *map = map_load(filename);
+    db_init();
+    struct node *map = map_get();
     s_player *player = player_new(player_name);
 
     s_game *game = (s_game *)malloc(sizeof(s_game));

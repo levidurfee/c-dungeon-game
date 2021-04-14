@@ -8,9 +8,10 @@
 #ifndef _MAP_H
 #define _MAP_H
 
+struct node *map_get();
+
 /**
- * Load a map from the specified filename.
  */
-struct node *map_load(char *filename);
+int map_load(void *not_used, int argc, char **argv, char **col_name);
 
 #endif /* _MAP_H */

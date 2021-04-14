@@ -38,7 +38,7 @@ void win_init()
     win_init_windows();
 
     mvwprintw(w_top, 1, 2, "What do you wanna do?");
-    mvwprintw(w_top, 2, 2, "Move: n, w, e, s Quit: q");
+    mvwprintw(w_top, 2, 2, "Move: a, w, s, d Quit: q");
 
     win_refresh();
 }

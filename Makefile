@@ -7,12 +7,12 @@
 CC = gcc
 
 # define any compile-time flags
-CFLAGS	:= -Wall -Wextra -O3
+CFLAGS	:= -Wall -Wextra
 
 # define library paths in addition to /usr/lib
 #   if I wanted to include libraries not in /usr/lib I'd specify
 #   their path using -Lpath, something like:
-LFLAGS = -lncurses
+LFLAGS = -lncurses -lsqlite3
 
 # define output directory
 OUTPUT	:= output
@@ -73,6 +73,9 @@ $(OUTPUT):
 $(MAIN): $(OBJECTS)
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(OUTPUTMAIN) $(OBJECTS) $(LFLAGS) $(LIBS)
 
+debug: $(OBJECTS)
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(OUTPUTMAIN) $(OBJECTS) $(LFLAGS) $(LIBS) -g
+
 # this is a suffix replacement rule for building .o's from .c's
 # it uses automatic variables $<: the name of the prerequisite of
 # the rule(a .c file) and $@: the name of the target of the rule (a .o file)
@@ -80,7 +83,7 @@ $(MAIN): $(OBJECTS)
 .c.o:
 	$(CC) $(CFLAGS) $(INCLUDES) -c $<  -o $@
 
-.PHONY: clean
+.PHONY: clean debug
 clean:
 	$(RM) $(OUTPUTMAIN)
 	$(RM) $(call FIXPATH,$(OBJECTS))

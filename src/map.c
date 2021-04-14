@@ -27,7 +27,11 @@ struct node *map_get()
  *
  * Whenever a function parameter is unused aside from its declaration.
  * To suppress this warning use the unused attribute (see Variable Attributes).
+ *
  * https://gcc.gnu.org/onlinedocs/gcc/Common-Variable-Attributes.html#Common-Variable-Attributes
+ *
+ * This attribute, attached to a variable, means that the variable is meant to
+ * be possibly unused. GCC does not produce a warning for this variable.
  */
 int map_load(void *not_used __attribute__((unused)), int argc, char **argv, char **col_name)
 {

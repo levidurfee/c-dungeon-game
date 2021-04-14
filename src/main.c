@@ -7,7 +7,7 @@
 
 int main()
 {
-    game_start("files/map.tsv", "Levi");
+    game_start("Levi");
 
     return 0;
 }

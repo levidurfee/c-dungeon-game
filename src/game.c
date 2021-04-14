@@ -43,7 +43,7 @@ void game_start(char *player_name)
             case 'w':
             case 65:
                 if(current_room->north == 0) {
-                    win_status("Can't go north!");
+                    win_status("");
                     break;
                 }
                 node = node_search(map, current_room->north);
@@ -52,7 +52,7 @@ void game_start(char *player_name)
             case 's':
             case 66:
                 if(current_room->south == 0) {
-                    win_status("Can't go south!");
+                    win_status("");
                     break;
                 }
                 node = node_search(map, current_room->south);
@@ -61,7 +61,7 @@ void game_start(char *player_name)
             case 'd':
             case 67:
                 if(current_room->east == 0) {
-                    win_status("Can't go east!");
+                    win_status("");
                     break;
                 }
                 node = node_search(map, current_room->east);
@@ -70,7 +70,7 @@ void game_start(char *player_name)
             case 'a':
             case 68:
                 if(current_room->west == 0) {
-                    win_status("Can't go west!");
+                    win_status("");
                     break;
                 }
                 node = node_search(map, current_room->west);
